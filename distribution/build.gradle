@@ -77,21 +77,23 @@ def artifact(Publication publication, Project project, artifactName) {
     configure()
 }
 
-publishing {
-    publications {
-        dslCommon(MavenPublication) { artifact(delegate, project(':spek-dsl:common'), 'spek-dsl-common') }
-        dslJvm(MavenPublication) { artifact(delegate, project(':spek-dsl:jvm'), 'spek-dsl-jvm') }
+rootProject.afterEvaluate {
+    publishing {
+        publications {
+            dslCommon(MavenPublication) { artifact(delegate, project(':spek-dsl:common'), 'spek-dsl-common') }
+            dslJvm(MavenPublication) { artifact(delegate, project(':spek-dsl:jvm'), 'spek-dsl-jvm') }
 
-        runtimeCommon(MavenPublication) { artifact(delegate, project(':spek-runtime:common'), 'spek-runtime-common') }
-        runtimeJvm(MavenPublication) { artifact(delegate, project(':spek-runtime:jvm'), 'spek-runtime-jvm') }
+            runtimeCommon(MavenPublication) { artifact(delegate, project(':spek-runtime:common'), 'spek-runtime-common') }
+            runtimeJvm(MavenPublication) { artifact(delegate, project(':spek-runtime:jvm'), 'spek-runtime-jvm') }
 
-        runnerJUnit5(MavenPublication) { artifact(delegate, project(':spek-runner:junit5'), 'spek-runner-junit5') }
+            runnerJUnit5(MavenPublication) { artifact(delegate, project(':spek-runner:junit5'), 'spek-runner-junit5') }
 
-        extensionDataDrivenCommon(MavenPublication) { artifact(delegate, project(':spek-extension:data-driven:common'), 'spek-extension-data-driven-common') }
-        extensionDataDrivenJvm(MavenPublication) { artifact(delegate, project(':spek-extension:data-driven:jvm'), 'spek-extension-data-driven-jvm') }
+            extensionDataDrivenCommon(MavenPublication) { artifact(delegate, project(':spek-extension:data-driven:common'), 'spek-extension-data-driven-common') }
+            extensionDataDrivenJvm(MavenPublication) { artifact(delegate, project(':spek-extension:data-driven:jvm'), 'spek-extension-data-driven-jvm') }
 
-        extensionSubjectCommon(MavenPublication) { artifact(delegate, project(':spek-extension:subject:common'), 'spek-extension-subject-common') }
-        extensionSubjectJvm(MavenPublication) { artifact(delegate, project(':spek-extension:subject:jvm'), 'spek-extension-subject-jvm') }
+            extensionSubjectCommon(MavenPublication) { artifact(delegate, project(':spek-extension:subject:common'), 'spek-extension-subject-common') }
+            extensionSubjectJvm(MavenPublication) { artifact(delegate, project(':spek-extension:subject:jvm'), 'spek-extension-subject-jvm') }
+        }
     }
 }
 
