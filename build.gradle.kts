@@ -13,7 +13,12 @@ reckon {
 
 allprojects {
     repositories {
-        jcenter()
+        jcenter() {
+            metadataSources {
+                gradleMetadata()
+                mavenPom()
+            }
+        }
     }
 
     if (Files.exists(Paths.get("$rootDir/local.properties"))) {
